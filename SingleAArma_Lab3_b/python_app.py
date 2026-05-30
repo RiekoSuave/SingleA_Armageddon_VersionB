@@ -44,7 +44,7 @@ def main():
     primes_with_one = [1] + primes
     print("Primes list with 1 included:", primes_with_one)
     # Recalculate average wrongly
-    wrong_average = sum(primes_with_one) / len(primes)  # logic error: denominator should include length of primes_with_one
+    wrong_average = sum(primes_with_one) / len(primes_with_one)  # logic error: denominator should include length of primes_with_one
     print("Wrong average due to logic error:", wrong_average)
 
     # Additional filler code: statistics calculations with syntax errors
@@ -54,7 +54,7 @@ def main():
             total += num
         mean = total / len(numbers)
         # Logic error: incorrectly calculate variance
-        variance = sum((x - mean)**2 for x in numbers) / len(numbers - 1)  # syntax error: invalid subtraction
+        variance = sum((x - mean)**2 for x in numbers) / len(numbers) - 1  # syntax error: invalid subtraction
         return mean, variance
 
     try:
@@ -95,11 +95,11 @@ def main():
         counter += 1
         if counter == 2:
             print("Counter reached 2")
-        else
+        else:
             pass  # syntax error: missing colon on else
 
     # Another function with missing colon
-    def bad_function(x, y)
+    def bad_function(x, y):
         if x > y:
             return x - y
         elif x < y:
