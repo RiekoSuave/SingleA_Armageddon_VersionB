@@ -1,0 +1,36 @@
+Here are the 7 bugs found and fixed in `script.js`:
+
+**Bug 1 — Logic Error: Multiplication instead of comparison in `multiplySort()`**
+- **Found:** `if (arr[j] * arr[j + 1])`
+- **Fix:** `if (arr[j] > arr[j + 1])`
+- **Reason:** Multiplying two array values produces a number which is always truthy (unless one is 0), so the swap always triggered and the array never sorted correctly.
+
+**Bug 2 — Logic Error: Median and mean calculated on reversed array**
+- **Found:** `sorted.reverse()` called before `computeMedian(sorted)` and `computeMean(sorted)`
+- **Fix:** Moved median and mean calculations to before the `.reverse()` call
+- **Reason:** `sorted.reverse()` mutates the array in place. Median and mean were being calculated on the descending array instead of the ascending sorted array, producing wrong results.
+
+**Bug 3 — SyntaxError: Assignment instead of comparison in `if` condition**
+- **Found:** `if (a % 2 = 0)`
+- **Fix:** `if (a % 2 === 0)`
+- **Reason:** Single `=` is assignment in JavaScript. This throws a ReferenceError in strict mode. Strict equality `===` is required for comparison.
+
+**Bug 4 — Logic Error: `count++` causes infinite loop**
+- **Found:** `count++`
+- **Fix:** `count--`
+- **Reason:** The while loop condition is `count > 0` but `count` was being incremented instead of decremented, causing an infinite loop. The `break` at `count > 20` was the only thing stopping it.
+
+**Bug 5 — SyntaxError: Missing closing brace in `faulty()`**
+- **Found:** `return -c;` followed directly by `return c;` with no closing brace
+- **Fix:** Added `} else {` before `return c;` and closing `}`
+- **Reason:** The `else if` block was never closed before the final `return c`, causing a parse error and making `return c` unreachable.
+
+**Bug 6 — Logic Error: `i++` causes infinite loop in `for` loop**
+- **Found:** `for (var i = 10; i > 0; i++)`
+- **Fix:** `for (var i = 10; i > 0; i--)`
+- **Reason:** The loop condition is `i > 0` but `i` was being incremented, so it grew forever and the loop never terminated.
+
+**Bug 7 — SyntaxError: Missing closing brace before `else` in `dummy()`**
+- **Found:** `if (x) { return x; else {`
+- **Fix:** `if (x) { return x; } else {`
+- **Reason:** The `if` block was never closed before the `else`, causing a parse error that prevented the entire script from running.

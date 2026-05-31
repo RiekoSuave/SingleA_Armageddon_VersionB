@@ -1,0 +1,22 @@
+Here are the 4 bugs found and fixed in `python_app.py`:
+
+**Bug 1 — Logic Error: Wrong denominator in `wrong_average`**
+- **Found:** `wrong_average = sum(primes_with_one) / len(primes)`
+- **Fix:** `wrong_average = sum(primes_with_one) / len(primes_with_one)`
+- **Reason:** `primes_with_one` has one extra element (1 is prepended), so dividing by `len(primes)` produced an inflated average.
+
+**Bug 2 — TypeError: Invalid operation in `stats()` variance calculation**
+- **Found:** `variance = sum((x - mean)**2 for x in numbers) / len(numbers - 1)`
+- **Fix:** `variance = sum((x - mean)**2 for x in numbers) / (len(numbers) - 1)`
+- **Reason:** You can't subtract an integer from a list. The subtraction needed to be outside `len()`.
+
+**Bug 3 — SyntaxError: Missing colon on `else`**
+- **Found:** `else` with no colon
+- **Fix:** `else:`
+- **Reason:** Python requires a colon after every `else`, `if`, `for`, `while`, and `def` statement.
+
+**Bug 4 — SyntaxError: Missing colon on function definition**
+- **Found:** `def bad_function(x, y)`
+- **Fix:** `def bad_function(x, y):`
+- **Reason:** All Python function definitions require a colon at the end. Without it the script fails to parse entirely.
+
