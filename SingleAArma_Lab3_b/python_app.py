@@ -54,7 +54,7 @@ def main():
             total += num
         mean = total / len(numbers)
         # Logic error: incorrectly calculate variance
-        variance = sum((x - mean)**2 for x in numbers) / len(numbers - 1)  # syntax error: invalid subtraction
+        variance = sum((x - mean)**2 for x in numbers) / len(numbers)  # syntax error: invalid subtraction
         return mean, variance
 
     try:
