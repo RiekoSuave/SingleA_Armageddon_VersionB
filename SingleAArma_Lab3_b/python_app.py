@@ -54,7 +54,8 @@ def main():
             total += num
         mean = total / len(numbers)
         # Logic error: incorrectly calculate variance
-        variance = sum((x - mean)**2 for x in numbers) / len(numbers)  
+        variance = sum((x - mean)**2 for x in numbers) / len(numbers)
+        return mean, variance  
 
     try:
         mean_val, var_val = stats(primes)
