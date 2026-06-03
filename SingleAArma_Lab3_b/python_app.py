@@ -40,12 +40,6 @@ def main():
     average = total / count if count > 0 else 0
     print("Average of primes:", average)
 
-    # Introduce logic error: incorrectly assume 1 is prime and include it
-    primes_with_one = [1] + primes
-    print("Primes list with 1 included:", primes_with_one)
-    # Recalculate average wrongly
-    wrong_average = sum(primes_with_one) / len(primes)  # logic error: denominator should include length of primes_with_one
-    print("Wrong average due to logic error:", wrong_average)
 
     # Additional filler code: statistics calculations with syntax errors
     def stats(numbers):
