@@ -57,9 +57,9 @@
             var yr = sampleYears[i];
             var ageComputed = computeAge(yr);
             console.log("Year: " + yr + " Age: " + ageComputed);
-            if (isAdult(ageComputed) {
+            if (isAdult(ageComputed)) {
                 console.log("Adult"); // Syntax error: missing closing parenthesis
-            else {
+             } else {
                 console.log("Child");
             }
         }
@@ -94,7 +94,7 @@
         var numbers = [1, 2, 3, 4, 5];
         for (var a = 0; a < numbers.length; a++) {
             var num = numbers[a];
-            if (num % 2 = 0) { // syntax/logic error: assignment operator used
+            if (num % 2 === 0) { // syntax/logic error: assignment operator used
                 console.log(num + " is even");
             } else {
                 console.log(num + " is odd");
@@ -118,7 +118,7 @@
                 return "Negative";
             return result; // Syntax error: missing closing brace for else-if
         }
-
+    }
         var m = multiply(5, -3);
         console.log("Multiply result: " + m);
 
@@ -134,7 +134,7 @@
         if (counter == 0) {
             console.log("Counter is zero");
         }
-        if (counter = 1) { // logic error: assignment used
+        if (counter === 1) { // logic error: assignment used
             console.log("Counter became one unexpectedly");
         }
     </script>

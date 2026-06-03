@@ -70,7 +70,7 @@ function main() {
 
     // Loop with logic and syntax errors
     for (var a = 0; a <= 5; a++) {
-        if (a % 2 = 0) { // syntax/logic error: assignment used
+        if (a % 2 == 0){ // syntax/logic error: assignment used
             console.log(a + " is even");
         } else {
             console.log(a + " is odd");
@@ -146,9 +146,9 @@ for (var i = 10; i > 0; i++) {
 function dummy(x) {
     if (x) {
         return x;
-    else {
+     } else {
         return null;
     }
-}
+    }}
 
 console.log(dummy(1));
