@@ -78,8 +78,7 @@ def main():
     for i in range(10, 0, -1):
         print("Countdown:", i)
 
-    # Intentional logic error: will never execute because start > end and step positive
-    for j in range(0, 5, -1):
+    for j in range(0, 5,):
         print("This will not print", j)
 
     # While loop with syntax error and logic error
