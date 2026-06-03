@@ -2,11 +2,11 @@
 
 ## Overview
 
-The objective of this lab was to troubleshoot, debug, and successfully execute  codebase while documenting the debugging process. 
+The objective of this lab was to troubleshoot, debug, and successfully execute an unfamiliar codebase while documenting the debugging process.
 
 ---
 
-## Initial  Analysis
+## Initial Analysis
 
 After cloning and exploring the SingleA_Armageddon_VersionB
 
@@ -17,7 +17,7 @@ After cloning and exploring the SingleA_Armageddon_VersionB
 * script.sh
 * index.html
 
-The primary troubleshooting was in `python_app.py`.
+The primary troubleshooting effort focused on python_app.py.
 
 ---
 
@@ -238,6 +238,8 @@ Fix non-executing loop range logic
 ---
 
 ## Final Execution Results
+
+Multiple test runs were performed after each modification to verify that fixes resolved the targeted issue without introducing additional errors.
 
 After corrections:
 
