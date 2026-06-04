@@ -1,0 +1,46 @@
+Here are the 9 bugs found and fixed in `index.html`:
+
+**Bug 1 — Logic Error: Assignment instead of NaN check**
+- **Found:** `if (age = NaN)` and missing opening brace `{`
+- **Fix:** `if (isNaN(age)) {`
+- **Reason:** NaN cannot be compared with `=` or `==` — even `NaN === NaN` returns false in JavaScript. `isNaN()` is the correct built-in function for this check.
+
+**Bug 2 — Logic Error: Off-by-one in for loop**
+- **Found:** `for (var i = 0; i <= sampleYears.length; i++)`
+- **Fix:** `for (var i = 0; i < sampleYears.length; i++)`
+- **Reason:** Using `<=` causes the loop to read one index past the end of the array, returning `undefined` on the final iteration.
+
+**Bug 3 — SyntaxError: Missing closing parenthesis on `isAdult()` call**
+- **Found:** `if (isAdult(ageComputed) {`
+- **Fix:** `if (isAdult(ageComputed)) {`
+- **Reason:** The function call was missing its closing `)`, causing a parse error.
+
+**Bug 4 — SyntaxError: Missing closing brace before `else`**
+- **Found:** `console.log("Adult");` followed directly by `else {`
+- **Fix:** `console.log("Adult"); } else {`
+- **Reason:** The `if` block was never closed before the `else`, causing a parse error.
+
+**Bug 5 — SyntaxError: Missing closing brace in `dummyFunction()`**
+- **Found:** `sum = sum * -1;` followed directly by `return sum;`
+- **Fix:** Added closing `}` after `sum = sum * -1;`
+- **Reason:** Without it, `return sum` was trapped inside the `if (n < 0)` block and only executed for negative numbers.
+
+**Bug 6 — SyntaxError: Missing closing brace in `multiply()`**
+- **Found:** `return "Negative";` followed directly by `return result;`
+- **Fix:** Added `} else {` before `return result;` and closing `}`
+- **Reason:** The `else if` block was never closed, making `return result` unreachable.
+
+**Bug 7 — SyntaxError: Assignment instead of comparison in loop**
+- **Found:** `if (num % 2 = 0)`
+- **Fix:** `if (num % 2 === 0)`
+- **Reason:** Single `=` is assignment, not comparison. This throws a ReferenceError in strict mode and produces wrong results otherwise.
+
+**Bug 8 — Logic Error: `b + 1` causes infinite loop**
+- **Found:** `b = b + 1;`
+- **Fix:** `b = b - 1;`
+- **Reason:** The while loop condition is `b > 0` but `b` was being incremented instead of decremented, causing an infinite loop.
+
+**Bug 9 — Logic Error: Assignment instead of comparison**
+- **Found:** `if (counter = 1)`
+- **Fix:** `if (counter === 1)`
+- **Reason:** `counter = 1` assigns 1 to counter and always evaluates as truthy, causing the block to execute regardless of counter's actual value.

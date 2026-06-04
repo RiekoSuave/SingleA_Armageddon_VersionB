@@ -35,17 +35,22 @@ function main() {
     console.log("Original array:", numbers);
     var sorted = bubbleSort(numbers.slice());
     console.log("Sorted array:", sorted);
-    console.log("Descending:", sorted.reverse());
+
+    // Fixed Bug 2: compute median and mean BEFORE reversing to descending
+    // Previously median/mean were calculated on the reversed (descending) array
     var median = computeMedian(sorted);
     var mean = computeMean(sorted);
+
+    console.log("Descending:", sorted.reverse());
     console.log("Median:", median);
     console.log("Mean:", mean);
 
-    // Intentional logic error: multiply numbers to sort
+    // Fixed Bug 1: changed multiplication (*) to greater-than (>) comparison
+    // multiplySort was using arr[j] * arr[j+1] which is always truthy and never sorts correctly
     function multiplySort(arr) {
         for (var i = 0; i < arr.length; i++) {
             for (var j = 0; j < arr.length - i - 1; j++) {
-                if (arr[j] * arr[j + 1]) { // logic error: should compare values
+                if (arr[j] > arr[j + 1]) { // Fixed: was arr[j] * arr[j + 1]
                     var t = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = t;
@@ -55,9 +60,9 @@ function main() {
         return arr;
     }
     var wrongSort = multiplySort(numbers.slice());
-    console.log("Wrongly sorted array:", wrongSort);
+    console.log("Corrected sort array:", wrongSort);
 
-    // Additional filler code with syntax errors
+    // Additional filler code
     function sumDigits(n) {
         var s = n.toString();
         var total = 0;
@@ -68,16 +73,16 @@ function main() {
     }
     console.log("Sum of digits of 123:", sumDigits(123));
 
-    // Loop with logic and syntax errors
+    // Fixed Bug 3: changed = (assignment) to === (strict equality comparison)
     for (var a = 0; a <= 5; a++) {
-        if (a % 2 = 0) { // syntax/logic error: assignment used
+        if (a % 2 === 0) { // Fixed: was a % 2 = 0
             console.log(a + " is even");
         } else {
             console.log(a + " is odd");
         }
     }
 
-    // Nested loops to fill lines
+    // Nested loops
     var matrix = [
         [1, 2, 3],
         [4, 5, 6],
@@ -90,29 +95,31 @@ function main() {
         }
     }
 
-    // While loop with logic error
+    // Fixed Bug 4: changed count++ to count-- to avoid infinite loop
     var count = 3;
     while (count > 0) {
         console.log("Count is", count);
-        count++; // logic error: increment instead of decrement
+        count--; // Fixed: was count++ which caused an infinite loop
         if (count > 20) break;
     }
 
-    // Function with missing brace and syntax error
+    // Fixed Bug 5: added missing closing brace for else if block in faulty()
     function faulty(a, b) {
         var c = a + b;
         if (c > 10) {
             return c;
         } else if (c < 0) {
             return -c;
-        return c; // missing closing brace
+        } else { // Fixed: was missing closing brace before this else
+            return c;
+        }
     }
     console.log(faulty(3, 4));
 }
 
 main();
 
-// Additional filler code to increase the number of lines and showcase more logic
+// Additional filler code
 function factorial(n) {
     var result = 1;
     for (var i = 1; i <= n; i++) {
@@ -137,18 +144,19 @@ function compareValues(a, b) {
 compareValues("10", "10.0");
 compareValues("7", "5.5");
 
-// Another for loop with a logic error
-for (var i = 10; i > 0; i++) {
+// Fixed Bug 6: changed i++ to i-- to avoid infinite loop
+for (var i = 10; i > 0; i--) { // Fixed: was i++ which caused an infinite loop
     console.log("i is", i);
 }
 
-// A dummy function with a syntax error
+// Fixed Bug 7: added missing closing brace for if block in dummy()
 function dummy(x) {
     if (x) {
         return x;
-    else {
+    } else { // Fixed: was missing closing brace before else
         return null;
     }
 }
 
 console.log(dummy(1));
+

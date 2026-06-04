@@ -1,0 +1,26 @@
+Here are the 5 bugs found and fixed in `script.sh`:
+
+**Bug 1 — Logic Error: Multiplication instead of addition for sum**
+- **Found:** `sum=$((sum * arg))`
+- **Fix:** `sum=$((sum + arg))`
+- **Reason:** The script is supposed to accumulate a sum, but multiplication was used instead of addition. Since `sum` starts at 0, multiplying always produced 0.
+
+**Bug 2 — Logic Error: Addition instead of multiplication in `multiply_list()`**
+- **Found:** `product=$((product + num))`
+- **Fix:** `product=$((product * num))`
+- **Reason:** A function named `multiply_list` was adding instead of multiplying, producing the wrong result entirely.
+
+**Bug 3 — Output Error: Stray comma in `echo` statement**
+- **Found:** `echo "Product of numbers:", $(multiply_list "$@")`
+- **Fix:** `echo "Product of numbers: $(multiply_list "$@")"`
+- **Reason:** The comma after the string literal printed literally as part of the output, producing `Product of numbers:, 1512` instead of `Product of numbers: 1512`.
+
+**Bug 4 — SyntaxError: Missing `then` in `check_value()`**
+- **Found:** `if [ $v -gt 100 ]` with no `then`
+- **Fix:** `if [ $v -gt 100 ]; then`
+- **Reason:** Bash `if` statements require `then` after the condition. Without it the script exited with `syntax error near unexpected token 'echo'`.
+
+**Bug 5 — SyntaxError: Assignment instead of comparison in `for` loop**
+- **Found:** `if (( k % 2 = 0 ))`
+- **Fix:** `if (( k % 2 == 0 ))`
+- **Reason:** Single `=` inside `(( ))` is assignment, not comparison. Bash requires `==` for equality checks in arithmetic context.
